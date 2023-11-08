@@ -1,28 +1,36 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../reducers/postReducer'
+import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
 import '../Header/header.css';
-import logo from '../Header/argentBankLogoR.png'
+import store from "../../Redux/store"
+import logo from '../Header/argentBankLogoR.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../../Redux/actions'
 
 
-export default function Header() {
-
+const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
- /* const user = useSelector((state) => state.user) */
- /* const isLoggedIn = useSelector((state) => state.login.isLoggedIn)*/
-  const token = useSelector((state)=>state.login.token)
+  const [user, setUser] = useState(null);
+  const deconnect = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/")
+};
 
-console.log("tokenNav", token)
+  useEffect(() => {
 
-  const handleSignOut = (e) => {
-      e.preventDefault();
-      dispatch(logout( ));
-      navigate("/")
-  }; 
+    // On récupère l'utilisateur connecté
+    const user = store.getState().user.auth;
 
+    // On met à jour l'état de l'utilisateur
+    setUser(user);
 
+  }, [user]);
+
+  //const fetch = () => {
+    // On effectue une requête API pour se connecter
+    // dispatch(login(username, password, "https://mongodb"));
+  //};
 
   return (
     <nav className="main-nav">
@@ -34,24 +42,28 @@ console.log("tokenNav", token)
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      { !user.auth.user && (
-                <div>
-                    <Link to="/SignIn" className="main-nav-item">
-                        <i className="fa fa-circle-user"></i>
-                        <span className="spanFaCircleUser">Sign In</span>
-                    </Link>
-                </div> )}
-            { user.auth.user && (
-                <div className='navbar_loginSuccess'>
-                    <Link to='/userAccount' className='main-nav-item'>
-                        <i className='fa fa-user-circle'></i>
-                        <span className="spanSignOut">Name</span>
-                    </Link>
-                    <Link to='/' className='main-nav-item' onClick={handleSignOut}>
-                        <i className='fa fa-sign-out'></i>
-                        Sign Out
-                    </Link>
-                </div> )}
-    </nav>  
-  )
-}
+      {!user && (
+        <div>
+          <Link to="/SignIn" className="main-nav-item">
+            <i className="fa fa-circle-user"></i>
+            <span className="spanFaCircleUser">Sign In</span>
+          </Link>
+        </div>
+      )}
+      {user && (
+        <div className="navbar_loginSuccess">
+          <Link to="/userAccount" className="main-nav-item">
+            <i className="fa fa-user-circle"></i>
+            <span className="spanSignOut">Name</span>
+          </Link>
+          <Link to="/" className="main-nav-item" onClick={deconnect}>
+            <i className="fa fa-sign-out"></i>
+            Sign Out
+          </Link>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Header;
