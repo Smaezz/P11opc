@@ -1,4 +1,5 @@
-import { combineReducers } from "redux";
+
+import combineReducers from "../Redux/reducers";
 
 //state initial
 const initialState = {
@@ -35,8 +36,8 @@ export async function fetchLogin(store) {
         store.dispatch(userRejected(error))
     }
 }
-initialState()
+
 
 function selectUser(state) {
     return state.user;
-  }
+  } 

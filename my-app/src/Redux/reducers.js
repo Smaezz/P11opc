@@ -6,12 +6,12 @@ const userReducer = (state = {
   isLoggedIn: false,
   username: null,
 }, action) => {
-  switch (login.type) {
+  switch (action) {
     case login.type:
       return {
         ...state,
         isLoggedIn: true,
-        username: login.payload.username,
+        username: action.payload.username,
       };
     case logout.type:
       return {
