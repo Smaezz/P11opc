@@ -1,13 +1,13 @@
 import React from 'react';
 import './button.css'
 
-const button = ({ title, classButton, type, Click }) => {
+const button = ({ title, classButton, type, click }) => {
     return (
         <>
             <button 
                 className={classButton}
                 type={type}
-                onClick={Click}>
+                onClick={click}>
                 {title}
             </button>
         </>
@@ -16,4 +16,3 @@ const button = ({ title, classButton, type, Click }) => {
 
 export default button;
 
-//<button className="sign-in-button">Sign In</button>

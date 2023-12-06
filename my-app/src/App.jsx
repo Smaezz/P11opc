@@ -6,10 +6,13 @@ import Home from './Pages/Home';
 import Signin from './Pages/Signin';
 import User from './Pages/User';
 import Erreur404 from './Pages/Erreur404';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 import './App.css';
 
 function App() {             
     return (
+    <Provider store={store}>   
     <BrowserRouter>
         <Header/>
         <Routes>
@@ -20,6 +23,7 @@ function App() {
         </Routes>
         <Footer/>
     </BrowserRouter>
+    </Provider>
 );
 }
 

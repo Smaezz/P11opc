@@ -1,13 +1,15 @@
-
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers";
-
+import tokenSlice from "./sliceLogin";
+import firstNameSlice  from "./sliceFirstname";
 
 //magasin Redux
 const store = configureStore({
-  reducer: userReducer,
-});
+    reducer: {
+      tokenSlice,
+      firstNameSlice,
+    }
+  });
 
-export default store;    console.log(store);
+export default store; console.log(store);
 
-// State de connexion
+

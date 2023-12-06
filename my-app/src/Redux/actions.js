@@ -9,6 +9,6 @@ export const login = createAction("LOGIN", (username, password) => {
   };
 });
 
-export const logout = createAction("LOGOUT");
+export const logout = createAction("LOGOUT", () => null);
 
 
