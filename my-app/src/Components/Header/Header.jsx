@@ -6,13 +6,16 @@ import logo from '../Header/argentBankLogoR.png';
 import { Link } from 'react-router-dom';
 // import Logout from '../../Redux/sliceLogout';
 import { getToken } from '../../Redux/sliceLogin';
+// import { getUserName } from "../Redux/sliceUsername";
 // import { getFirstName } from '../../Redux/sliceFirstname';
 // console.log(Logout);
 
 const token = localStorage.getItem("token");
+
 const Header = () => {
   // const [token, setToken] = useState(false);
-  const firstName = useSelector((state) => state.firstName);
+  // const firstName = useSelector((state) => state.firstName);
+  const username = useSelector((state) => state.usernameSlice);
   // const [token, setToken] = useState();
   // Use Effect
   useEffect(() => {
@@ -51,10 +54,10 @@ const Header = () => {
         <div className="navbar_loginSuccess">
           <Link to="/userAccount" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
-            <span className="spanSignOut">{firstName}</span>
+            <span className="spanSignOut">{username.value}</span>
           </Link>
           <Link to="/" className="main-nav-item" onClick={handleLogout}>
-            <i className="fa fa-sign-out"></i>Charles
+            <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>
         </div>

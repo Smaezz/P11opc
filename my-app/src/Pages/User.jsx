@@ -13,8 +13,10 @@ let [newUsername, setNewUsername] = useState("");
 
 // Use Selector / Use Effect
 const dispatch = useDispatch();
-const username = useSelector((state) => state.userName);
-const token = useSelector((state) => state.token);
+const username = useSelector((state) => state.usernameSlice);
+const token = useSelector((state) => state.tokenSlice);
+console.log(token);
+console.log(username);
 /** 
 useEffect(() => {
     const user = getLoginFetch(token);
@@ -57,7 +59,7 @@ if(token === 0) return <Navigate to="/login" />
       <main className="main bg-dark">
         <div className="header">
           <h1>Welcome back<br />
-          <span id="fullName">Charles</span>
+          <span id="fullName">{username.value}</span>
           </h1>
           <button className="edit-button" id="edit-button" onClick={handleEdit}>Edit Name</button>
         </div>
@@ -70,7 +72,7 @@ if(token === 0) return <Navigate to="/login" />
               <input type="text" placeholder="" />
             </div>
             <div className="profil-input-wrapper">
-              <input type="text" placeholder={username} onChange={e => setNewUsername(e.target.value)} required />
+              <input type="text" placeholder={newUsername} onChange={e => setNewUsername(e.target.value)} required />
             </div>
           </form>
           <div className="btn-form">
