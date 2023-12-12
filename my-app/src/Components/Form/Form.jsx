@@ -2,23 +2,21 @@ import React from 'react';
 import '../Form/form.css';
 import Button from '../button/Button';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { getToken } from '../../Redux/sliceLogin';
+// import Header from '../Header/Header';
+// import { useDispatch} from 'react-redux';
 // import { login, logout } from "./actions";
 
-// const dispatch = useDispatch;
 
 function SigninF() {
   const navigate = useNavigate();
 
+  
   async function login() {
     // Créer une requête HTTP
-    let email = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    //selection du state
-    // const token = useSelector ((state) => state.token.value);
-    
-
+    const email = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    console.log(email);
+    console.log(password);
     const response = await fetch("http://localhost:3001/api/v1/user/login", {
       method: "POST",
       headers: {
@@ -36,10 +34,10 @@ function SigninF() {
       console.log(responseJs);
       localStorage.setItem("token", responseJs.body.token);
       localStorage.setItem("message", responseJs.message);
-      console.log(responseJs.body.token);
-      // dispatchLoginAction();
+      console.log(responseJs);
       // Naviguer vers la page "/User"
       navigate("/User");
+      
     } else {
       // La connexion a échoué
       alert("Nom d'utilisateur ou mot de passe incorrect");

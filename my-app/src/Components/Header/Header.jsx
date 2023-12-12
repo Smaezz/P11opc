@@ -1,17 +1,33 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import React, { useEffect } from "react";
-// import getToken from "../../Redux/sliceLogin";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+// import { getToken } from "../../Redux/sliceLogin";
 import '../Header/header.css';
 import logo from '../Header/argentBankLogoR.png';
 import { Link } from 'react-router-dom';
-import Logout from '../../Redux/sliceLogout';
-import { getFirstName } from '../../Redux/sliceFirstname';
+// import Logout from '../../Redux/sliceLogout';
+import { getToken } from '../../Redux/sliceLogin';
+// import { getFirstName } from '../../Redux/sliceFirstname';
+// console.log(Logout);
 
+const token = localStorage.getItem("token");
 const Header = () => {
-  
-  const token = localStorage.getItem("token");
-console.log(token);
-  
+  // const [token, setToken] = useState(false);
+  const firstName = useSelector((state) => state.firstName);
+  // const [token, setToken] = useState();
+  // Use Effect
+  useEffect(() => {
+    if(token === localStorage.getItem("token")) {
+        dispatch(getToken(token))
+    }
+});
+  // deconnexion
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    // Logout();
+    dispatch(getToken(0));
+    localStorage.removeItem("token");
+    localStorage.removeItem("message");
+  };
 
   return (
     <nav className="main-nav">
@@ -35,10 +51,10 @@ console.log(token);
         <div className="navbar_loginSuccess">
           <Link to="/userAccount" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
-            <span className="spanSignOut">{getFirstName}</span>
+            <span className="spanSignOut">{firstName}</span>
           </Link>
-          <Link to="/" className="main-nav-item" onClick={Logout}>
-            <i className="fa fa-sign-out"></i>
+          <Link to="/" className="main-nav-item" onClick={handleLogout}>
+            <i className="fa fa-sign-out"></i>Charles
             Sign Out
           </Link>
         </div>

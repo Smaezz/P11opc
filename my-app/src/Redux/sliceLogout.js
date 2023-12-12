@@ -1,22 +1,22 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getToken } from "../Redux/sliceLogin";
-import { getFirstName } from "../Redux/sliceFirstname";
-import { Navigate } from "react-router-dom";
+import { createSlice } from "@reduxjs/toolkit";
 
-function Logout() {
-    // Change le token
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getToken(0));
-        dispatch(getFirstName(""));
-        localStorage.removeItem("token");
-    });
-    
-
-    // Redirection
-    return <Navigate to="/" /> 
+const initialState = {
+    value: "",
 }
+    
+const Logout = createSlice({
+    name: 'logout',
+    initialState,
+    // reducers permet de définir les actions et le reducer
+    reducers: {
+        toggle: (state) => {
+            return state === 'logout' ? 'login' : 'logout'
+        },
+        set: (state, action) => {
+            return action.payload
+        },
+    },
+});
 
-export default Logout;
+export default Logout.reducer;
