@@ -1,14 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
-// import { getToken } from "../../Redux/sliceLogin";
 import '../Header/header.css';
 import logo from '../Header/argentBankLogoR.png';
 import { Link } from 'react-router-dom';
-// import Logout from '../../Redux/sliceLogout';
 import { getToken } from '../../Redux/sliceLogin';
-// import { getUserName } from "../Redux/sliceUsername";
-// import { getFirstName } from '../../Redux/sliceFirstname';
-// console.log(Logout);
 
 const token = localStorage.getItem("token");
 
@@ -19,10 +14,10 @@ const Header = () => {
   // const [token, setToken] = useState();
   // Use Effect
   useEffect(() => {
-    if(token === localStorage.getItem("token")) {
-        dispatch(getToken(token))
+    if (token === localStorage.getItem("token")) {
+      dispatch(getToken(token))
     }
-});
+  });
   // deconnexion
   const dispatch = useDispatch();
   const handleLogout = () => {

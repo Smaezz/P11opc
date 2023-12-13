@@ -15,10 +15,10 @@ export const getProfil = async (token) => {
 }
 
 // mise à jour d'un profil
-export const saveUserProfil = async (token,username) => {
+export const saveUserProfil = async (token, username) => {
     const URL_API = "http://localhost:3001/api/v1/user/profile";
 
-    const saveUserProfilResponse = await fetch(URL_API, { 
+    const saveUserProfilResponse = await fetch(URL_API, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

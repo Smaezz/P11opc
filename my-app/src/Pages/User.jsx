@@ -1,5 +1,4 @@
-
-import "../Components/profilEdit/profilEdit.css";
+import "./User.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveUserProfil } from "../API/Api";
@@ -8,58 +7,58 @@ import { Navigate } from "react-router-dom";
 
 
 const User = () => {
-// Use State
-let [newUsername, setNewUsername] = useState("");
+  // Use State
+  let [newUsername, setNewUsername] = useState("");
 
-// Use Selector / Use Effect
-const dispatch = useDispatch();
-const username = useSelector((state) => state.usernameSlice);
-const token = useSelector((state) => state.tokenSlice);
-console.log(token);
-console.log(username);
-/** 
-useEffect(() => {
-    const user = getLoginFetch(token);
-    user.then(obj => {
-        dispatch(getFirstName(obj.firstName));
-        dispatch(getLastName(obj.lastName));
-    });
-}, []);
-*/
+  // Use Selector / Use Effect
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.usernameSlice);
+  const token = useSelector((state) => state.tokenSlice);
+  console.log(token);
+  console.log(username);
+  /** 
+  useEffect(() => {
+      const user = getLoginFetch(token);
+      user.then(obj => {
+          dispatch(getFirstName(obj.firstName));
+          dispatch(getLastName(obj.lastName));
+      });
+  }, []);
+  */
 
-// Edit name
-const handleEdit = () => {
+  // Edit name
+  const handleEdit = () => {
     document.getElementById("fullName").style.display = "none";
     document.getElementById("edit-button").style.display = "none";
     document.getElementById("edit-section").style.display = "block";
-}
+  }
 
 
-// Save Edit
-const handleEditSave = () => {
+  // Save Edit
+  const handleEditSave = () => {
     document.getElementById("fullName").style.display = "block";
     document.getElementById("edit-button").style.display = "initial";
     document.getElementById("edit-section").style.display = "none";
     dispatch(getUserName(newUsername));
-    saveUserProfil(token,username);
-}
+    saveUserProfil(token, username);
+  }
 
-// Cancel Edit
-const handleEditCancel = () => {
+  // Cancel Edit
+  const handleEditCancel = () => {
     document.getElementById("fullName").style.display = "block";
     document.getElementById("edit-button").style.display = "initial";
     document.getElementById("edit-section").style.display = "none";
-}
+  }
 
-// Redirection
-if(token === 0) return <Navigate to="/login" />
+  // Redirection
+  if (token === 0) return <Navigate to="/login" />
 
   return (
     <>
       <main className="main bg-dark">
         <div className="header">
           <h1>Welcome back<br />
-          <span id="fullName">{username.value}</span>
+            <span id="fullName">{username.value}</span>
           </h1>
           <button className="edit-button" id="edit-button" onClick={handleEdit}>Edit Name</button>
         </div>
