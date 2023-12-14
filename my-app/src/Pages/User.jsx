@@ -12,10 +12,10 @@ const User = () => {
 
   // Use Selector / Use Effect
   const dispatch = useDispatch();
-  const username = useSelector((state) => state.usernameSlice);
+  const usernameR = useSelector((state) => state.usernameSlice);
   const token = useSelector((state) => state.tokenSlice);
   console.log(token);
-  console.log(username);
+  console.log(usernameR);
   /** 
   useEffect(() => {
       const user = getLoginFetch(token);
@@ -35,12 +35,14 @@ const User = () => {
 
 
   // Save Edit
-  const handleEditSave = () => {
+  const handleEditSave = (event) => {
+    event.preventDefault(); 
+    dispatch(getUserName(newUsername));
+    saveUserProfil(newUsername);
     document.getElementById("fullName").style.display = "block";
     document.getElementById("edit-button").style.display = "initial";
     document.getElementById("edit-section").style.display = "none";
-    dispatch(getUserName(newUsername));
-    saveUserProfil(token, username);
+    
   }
 
   // Cancel Edit
@@ -58,23 +60,27 @@ const User = () => {
       <main className="main bg-dark">
         <div className="header">
           <h1>Welcome back<br />
-            <span id="fullName">{username.value}</span>
+            <span id="fullName">{usernameR.value}</span>
           </h1>
           <button className="edit-button" id="edit-button" onClick={handleEdit}>Edit Name</button>
         </div>
         <div id="edit-section">
-          <form className="edit" name="edit">
+          <form className="edit" name="edit" >
             <div className="profil-input-wrapper">
-              <input type="text" placeholder="" />
+              <label for="firstname" id="labelSignin">Firstname</label>
+              <input type="text" placeholder="" id="firstname"/>
             </div>
             <div className="profil-input-wrapper">
-              <input type="text" placeholder="" />
+            <label for="lastname" id="labelSignin">Lastname</label>
+              <input type="text" placeholder="" id="lastname"/>
             </div>
             <div className="profil-input-wrapper">
-              <input type="text" placeholder={newUsername} onChange={e => setNewUsername(e.target.value)} required />
+            <label for="username" id="labelSignin">Username</label>
+              <input type="text" placeholder={newUsername} id="username"
+              onChange={e => setNewUsername(e.target.value)} required />
             </div>
           </form>
-          <div className="btn-form">
+          <div className="btn-form" id="btnForm">
             <button type="submit" className="save-button" onClick={handleEditSave}>Save</button>
             <button type="button" className="cancel-button" onClick={handleEditCancel}>Cancel</button>
           </div>

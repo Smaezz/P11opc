@@ -8,7 +8,6 @@ const initialState = {
 export const lastNameSlice = createSlice({
     name: "lastName",
     initialState,
-
     reducers: {
         getLastName: (state, action) => {
             state.value = action.payload;

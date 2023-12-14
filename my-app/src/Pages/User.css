@@ -4,7 +4,6 @@
     width: 40%;
     margin: 0 auto;
 }
-
 .btn-form {
     display: flex;
     flex-direction: column;
@@ -61,4 +60,22 @@
     font-size: 1.2rem;
     margin: 10px 5px;
     padding: 5px;
+}
+
+#btnForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+#labelSignin {
+    color: #fff;
+}
+
+.edit {
+    width: 200px;
 }

@@ -66,3 +66,23 @@ height: 10px;
   margin-left: 3px;
   font-size: 16px;
 }
+
+.fa .fa-circle-user {
+  height: 20px;
+  width: 20px;
+  padding-right: 0.5rem;
+}
+
+.navHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#iconSignin {
+  font-size: 18px;
+}
+
+#iconSignout {
+  font-size: 18px;
+}

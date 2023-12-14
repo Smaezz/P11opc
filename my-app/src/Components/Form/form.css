@@ -4,6 +4,8 @@
   
   .bg-dark {
     background-color: #12002b;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .sign-in-content {

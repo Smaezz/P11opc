@@ -2,10 +2,11 @@ import React from 'react';
 import '../Form/form.css';
 import Button from '../button/Button';
 import { useNavigate } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { getToken } from '../../Redux/sliceLogin';
 
 function SigninF() {
   const navigate = useNavigate();
-
 
   async function login() {
     // Créer une requête HTTP
@@ -22,23 +23,28 @@ function SigninF() {
         email: email,
         password: password,
       }),
+
     });
 
     if (response.status === 200) {
       // La connexion est réussie
+      
       const responseJs = await response.json();
+      
       console.log(responseJs);
       localStorage.setItem("token", responseJs.body.token);
       localStorage.setItem("message", responseJs.message);
+      // dispatch(getToken(responseJs));
       console.log(responseJs);
       // Naviguer vers la page "/User"
-      navigate("/User");
+      return navigate("/User");
 
     } else {
       // La connexion a échoué
       alert("Nom d'utilisateur ou mot de passe incorrect");
       // window.location = "Erreur404.jsx"
-    }
+    } 
+    return SigninF;
   }
 
   return (
