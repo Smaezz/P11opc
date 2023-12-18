@@ -72,10 +72,12 @@
     margin-top: 1rem;
 }
 
+.labelSignin {
+    color: #fff;
+}
 #labelSignin {
     color: #fff;
 }
-
 .edit {
     width: 200px;
 }

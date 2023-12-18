@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectUserLogin, selectUser } from "../../utils/redux/selectors";
-import { logOut } from "../../utils/redux/reducers";
+import { logOut } from "../../utils/redux/sliceUser";
 
 
 

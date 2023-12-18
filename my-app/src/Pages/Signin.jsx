@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { logIn, setUser } from "../utils/redux/reducers";
+import { logIn, setUser } from "../utils/redux/sliceUser";
 import Api from "../utils/api/Api";
 import '../Pages/Signin.css';
 
@@ -59,10 +59,10 @@ function SignIn() {
     <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon" id="labelSignin"></i>
-        <h1 id="labelSignin">Sign In</h1>
+        <h1 className="labelSignin">Sign In</h1>
         <form className="edit">
           <div className="input-wrapper">
-            <label id="labelSignin">Username</label>
+            <label className="labelSignin">Username</label>
             <input
               type="email"
               name="name"
@@ -70,7 +70,7 @@ function SignIn() {
             />
           </div>
           <div className="input-wrapper">
-            <label id="labelSignin">Password</label>
+            <label className="labelSignin">Password</label>
             <input
               type="password"
               name="name"
@@ -83,7 +83,7 @@ function SignIn() {
               checked={checked}
               onChange={() => handleChangeCheckbox()}
             />
-            <label id="labelSignin">Remember me</label>
+            <label className="labelSignin">Remember me</label>
           </div>
           <input
             className="sign-in-button"

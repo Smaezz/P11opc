@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, selectUserJWT } from "../../utils/redux/selectors";
-import { updateUser } from "../../utils/redux/reducers";
+import { updateUser } from "../../utils/redux/sliceUser";
 import Api from "../../utils/api/Api";
 
 
@@ -45,19 +45,19 @@ function UpdateForm() {
       ) : (
         <div>
           <div className="updateform_inputs">
-          <label htmlFor="firstName" id="labelSignin">Firstname</label>
+          <label htmlFor="firstName" className="labelSignin">Firstname</label>
             <input name="firstName"
               type="text"
               placeholder={user.firstName}
               onChange={(e) => setFirstNameInput(e.target.value)}
             />
-            <label htmlFor="lastName" id="labelSignin">Lastname</label>
+            <label htmlFor="lastName" className="labelSignin">Lastname</label>
             <input name="lastName"
               type="text"
               placeholder={user.lastName}
               onChange={(e) => setLastNameInput(e.target.value)}
             />
-            <label htmlFor="userName" id="labelSignin">Username</label>
+            <label htmlFor="userName" className="labelSignin">Username</label>
             <input name="userName"
               type="text"
               placeholder={user.userName}

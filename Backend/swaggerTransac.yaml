@@ -164,7 +164,7 @@ paths:
       security:
         - Bearer: []
   /transactions/{transactionId}/category:
-    patch:
+    put:
       tags:
         - Transaction Module
       summary: update transaction's category
@@ -200,7 +200,7 @@ paths:
       security:
         - Bearer: []
   /transactions/{transactionId}/notes:
-    patch:
+    put:
       tags:
         - Transaction Module
       summary: update transaction's notes
@@ -343,7 +343,7 @@ definitions:
         example: Food
       notes:
         type: string
-        example: Cette transaction est étrange !!!
+        example: string
   ApiTransactionsResponse:
     type: object
     properties:
