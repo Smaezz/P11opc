@@ -257,7 +257,15 @@ html {
     background-color: #00bc77;
     color: #fff;
   }
-  
+  #darkBack {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+  #padding {
+    padding-top: 2rem;
+  }
+
   @media (min-width: 720px) {
     .account {
       flex-direction: row;
@@ -271,3 +279,5 @@ html {
       width: 200px;
     }
   }
+
+

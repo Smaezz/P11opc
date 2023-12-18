@@ -3,11 +3,12 @@ import '../Form/form.css';
 import Button from '../button/Button';
 import { useNavigate } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
+import { getUserProfil } from '../../API/Api';
 // import { getToken } from '../../Redux/sliceLogin';
 
 function SigninF() {
   const navigate = useNavigate();
-
+  // const dispatch = useDispatch();
   async function login() {
     // Créer une requête HTTP
     const email = document.getElementById("username").value;
@@ -23,21 +24,19 @@ function SigninF() {
         email: email,
         password: password,
       }),
-
     });
 
     if (response.status === 200) {
       // La connexion est réussie
-      
       const responseJs = await response.json();
-      
       console.log(responseJs);
       localStorage.setItem("token", responseJs.body.token);
       localStorage.setItem("message", responseJs.message);
-      // dispatch(getToken(responseJs));
-      console.log(responseJs);
+      // dispatch(login());
+      // recuperation du profil
+      getUserProfil();
       // Naviguer vers la page "/User"
-      return navigate("/User");
+      navigate("/User");
 
     } else {
       // La connexion a échoué

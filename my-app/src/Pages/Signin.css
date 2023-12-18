@@ -79,3 +79,18 @@
 .edit {
     width: 200px;
 }
+
+.sign-in-content {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.updateform_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
