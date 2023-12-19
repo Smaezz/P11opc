@@ -27,16 +27,13 @@ function SignIn() {
 
   const handleChangeCheckbox = () => {
     setChecked(!checked);
-    if(!checked) {
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    } 
-    if(checked) {
-    localStorage.removeItem("email", email);
-    localStorage.removeItem("password", password);}
-    if(localStorage.getItem("email") === true && 
-       localStorage.getItem("password") === true) {
-      const tokenRequest = new Api().tokenRequest(email, password);
+    if (!checked) {
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+    }
+    if (checked) {
+      localStorage.removeItem("email", email);
+      localStorage.removeItem("password", password);
     }
   };
 

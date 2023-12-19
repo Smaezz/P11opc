@@ -136,7 +136,7 @@ paths:
       security:
         - Bearer: []
   /transactions/{accountId}:
-    get:
+    post:
       tags:
         - Transaction Module
       summary: User's Account Transactions
