@@ -38,14 +38,14 @@ class Api {
     }
   };
 
-  updateRequest = async (userName, JWT) => {
+  updateRequest = async (userName, firstName, lastName, JWT) => {
     try {
       const headers = new Headers();
       headers.append("Authorization", `Bearer ${JWT}`);
       headers.append("Content-Type", "application/json; charset=utf-8");
       const options = {
         method: "PUT",
-        body: JSON.stringify({ userName }),
+        body: JSON.stringify({ userName, firstName, lastName }),
         headers,
       };
       const request = await fetch(

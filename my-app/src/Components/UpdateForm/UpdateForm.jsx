@@ -15,7 +15,7 @@ function UpdateForm() {
   const [userName, setUserNameInput] = useState("");
 
   const request = async () => {
-    const req = await new Api().updateRequest(userName, token);
+    const req = await new Api().updateRequest(userName, firstName,lastName, token);
 
     if (req.status === 200) {
       const firstName = req.body.firstName;

@@ -3,7 +3,7 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import Home from './Pages/Home';
-import Signin from './Pages/SignIn';
+import Signin from './Pages/Signin';
 import Profile from './Pages/Profile'
 import Erreur404 from './Pages/Erreur404';
 import { Provider } from 'react-redux';
@@ -17,7 +17,7 @@ function App() {
         <Header/>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<Signin />} />
+            <Route path="/Signin" element={<Signin />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="*" element={<Erreur404 />} />
         </Routes>
