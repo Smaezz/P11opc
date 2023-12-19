@@ -3,7 +3,6 @@ import './card.css';
 import iconChat from '../Card/icon-chatR.png';
 import iconMoney from '../Card/icon-moneyR.png';
 import iconSecurity from '../Card/icon-securityR.png';
-//import features from '../../../data';
 
 const Card = () => {
     return (

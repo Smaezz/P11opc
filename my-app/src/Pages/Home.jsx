@@ -1,5 +1,4 @@
 import Banner from "../Components/banner/Banner";
-//import Nav from "../Components/nav/Nav";
 import Card from "../Components/Card/Card";
 
 const Home = () => {

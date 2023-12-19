@@ -12,6 +12,3 @@ root.render(
   </React.StrictMode>
   
 );
-
-
-//Provider va connecter le magasin à l'application React pour donner l'accés aux composants

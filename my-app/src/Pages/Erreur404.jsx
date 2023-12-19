@@ -1,8 +1,4 @@
-
-//import Nav from "../Components/nav/Nav";
-
-
-const Home = () => {
+const Erreur = () => {
 
   return (
     <>
@@ -12,4 +8,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default Erreur;
