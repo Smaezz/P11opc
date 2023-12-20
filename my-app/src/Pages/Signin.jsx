@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { logIn, setUser } from "../utils/redux/sliceUser";
@@ -27,18 +27,11 @@ function SignIn() {
 
   const handleChangeCheckbox = () => {
     setChecked(!checked);
-    if (!checked) {
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-    }
-    if (checked) {
-      localStorage.removeItem("email", email);
-      localStorage.removeItem("password", password);
-    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    checked ? localStorage.setItem("Email", email) : localStorage.removeItem("Email");
 
     if (email.length !== 0 && password.length !== 0) {
       setError("");
@@ -62,6 +55,13 @@ function SignIn() {
       }
     }
   };
+  
+  useEffect(() => {
+		if (localStorage.getItem("Email")) {
+			setChecked(true);
+			setMail(localStorage.getItem("Email"));
+		}
+	}, [setMail]);
 
   return (
     <main className="main bg-dark">
@@ -74,6 +74,8 @@ function SignIn() {
             <input
               type="email"
               name="name"
+              value={email}
+              autoComplete="current-email"
               onChange={(e) => handleChangeMail(e)}
             />
           </div>
@@ -82,6 +84,7 @@ function SignIn() {
             <input
               type="password"
               name="name"
+              autoComplete="current-password"
               onChange={(e) => handleChangePassword(e)}
             />
           </div>
