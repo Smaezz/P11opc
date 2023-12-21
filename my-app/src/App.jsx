@@ -2,7 +2,7 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import Home from './Pages/Home';
-import Signin from './Pages/Signin';
+import Signin from './Pages/SignIn.jsx';
 import Profile from './Pages/Profile'
 import Erreur404 from './Pages/Erreur404';
 import { Provider } from 'react-redux';

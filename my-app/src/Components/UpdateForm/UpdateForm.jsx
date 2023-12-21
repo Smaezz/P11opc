@@ -33,8 +33,7 @@ function UpdateForm() {
           {user.userName}
           </h2>
       {formIsLocked ? (
-        <div>
-          
+        <div> 
           <button
             className="edit-button"
             onClick={() => setFormIsLocked(!formIsLocked)}

@@ -113,7 +113,7 @@ paths:
         "500":
           description: Internal Server Error
   /user/accounts:
-    post:
+    get:
       tags:
         - User Module
       summary: User accounts API
@@ -135,8 +135,8 @@ paths:
           description: Internal Server Error
       security:
         - Bearer: []
-  /transactions/{accountId}:
-    post:
+  /user/{accountId}:
+    get:
       tags:
         - Transaction Module
       summary: User's Account Transactions
@@ -163,7 +163,7 @@ paths:
           description: Internal Server Error
       security:
         - Bearer: []
-  /transactions/{transactionId}/category:
+  /user/{transactionId}:
     put:
       tags:
         - Transaction Module
@@ -199,8 +199,7 @@ paths:
           description: Internal Server Error
       security:
         - Bearer: []
-  /transactions/{transactionId}/notes:
-    put:
+    delete:
       tags:
         - Transaction Module
       summary: update transaction's notes

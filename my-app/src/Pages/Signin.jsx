@@ -16,8 +16,8 @@ function SignIn() {
   const [Error, setError] = useState("");
 
   const handleChangeMail = (e) => {
-    const name = e.target.value;
-    setMail(name);
+    const email = e.target.value;
+    setMail(email);
   };
 
   const handleChangePassword = (e) => {
