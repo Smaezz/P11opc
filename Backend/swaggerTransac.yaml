@@ -1,118 +1,38 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: "1.0.0"
-  termsOfService: "http://swagger.io/terms/"
+  version: 1.0.0
+  termsOfService: http://swagger.io/terms/
 host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
 paths:
-  /user/login:
-    post:
+  /user/accounts:
+    get:
       tags:
-        - User Module
-      summary: Login
-      description: API for Login
-      parameters:
-        - in: body
-          name: body
-          description: Login Payload
-          required: true
-          schema:
-            $ref: "#/definitions/Login"
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Login Successfully
-          schema:
-            $ref: "#/definitions/LoginResponse"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-  /user/signup:
-    post:
-      tags:
-        - User Module
-      summary: Signup
-      description: API for Signup
-      parameters:
-        - in: body
-          name: body
-          description: Signup Payload
-          required: true
-          schema:
-            $ref: "#/definitions/User"
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Signup Successfully
-          schema:
-            $ref: "#/definitions/ApiResponse"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-  /user/profile:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: User Profile API
-      description: API for fetching a user profile
+        - Transaction Module
+      summary: User's Account Transactions
+      description: List user's account transactions
       parameters:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
           type: string
           required: true
-      produces:
-        - application/json
       responses:
-        "200":
-          description: User profile retrieved successully
+        '200':
+          description: Transactions retrieved successully
           schema:
-            $ref: "#/definitions/ApiResponse"
-        "400":
+            $ref: '#/definitions/ApiAccountsResponse'
+        '400':
           description: Invalid Fields
-        "500":
+        '500':
           description: Internal Server Error
-    put:
       security:
         - Bearer: []
-      tags:
-        - User Module
-      summary: User Profile API
-      description: API for updating a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          type: string
-          required: true
-        - in: body
-          name: body
-          description: Update user profile attributes
-          required: true
-          schema:
-            $ref: "#/definitions/UserProfile"
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: User profile retrieved successully
-          schema:
-            $ref: "#/definitions/ApiResponse"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-  /user/{accountId}:
+  /user/accounts/{accountId}:
     get:
       tags:
         - Transaction Module
@@ -130,17 +50,17 @@ paths:
           type: string
           required: true
       responses:
-        "200":
+        '200':
           description: Transactions retrieved successully
           schema:
-            $ref: "#/definitions/ApiTransactionsResponse"
-        "400":
+            $ref: '#/definitions/ApiTransactionsResponse'
+        '400':
           description: Invalid Fields
-        "500":
+        '500':
           description: Internal Server Error
       security:
         - Bearer: []
-  /user/{transactionId}:
+  /user/informations/{transactionId}:
     put:
       tags:
         - Transaction Module
@@ -162,17 +82,17 @@ paths:
           description: Payload for update transaction category
           required: true
           schema:
-            $ref: "#/definitions/CategoryPayload"
+            $ref: '#/definitions/CategoryPayload'
       produces:
         - application/json
       responses:
-        "200":
+        '200':
           description: Update category retrieved successully
           schema:
-            $ref: "#/definitions/ApiCategoryResponse"
-        "400":
+            $ref: '#/definitions/ApiCategoryResponse'
+        '400':
           description: Invalid Fields
-        "500":
+        '500':
           description: Internal Server Error
       security:
         - Bearer: []
@@ -195,11 +115,11 @@ paths:
       produces:
         - application/json
       responses:
-        "200":
+        '200':
           description: delete Notes successfully
-        "400":
+        '400':
           description: Invalid Fields
-        "500":
+        '500':
           description: Internal Server Error
       security:
         - Bearer: []
@@ -260,18 +180,18 @@ definitions:
   Account:
     type: object
     properties:
-      accountId:
+      AccountId:
         type: string
         example: dlfkjsd4656LSJFKLS
-      title:
-        type: string
-        example: Argent Bank Checking (x8349)
-      amount:
-        type: string
-        example: $2,082.79
       description:
         type: string
-        example: Available Balance
+        example: Argent Bank Checking
+      amount:
+        type: string
+        example: $48.000
+      balance:
+        type: string
+        example: Available balance
   ApiAccountsResponse:
     type: object
     properties:
@@ -284,7 +204,7 @@ definitions:
       body:
         type: array
         items:
-          $ref: "#/definitions/Account"
+          $ref: '#/definitions/Account'
   Transaction:
     type: object
     properties:
@@ -324,11 +244,11 @@ definitions:
       body:
         type: array
         items:
-          $ref: "#/definitions/Transaction"
+          $ref: '#/definitions/Transaction'
   CategoryPayload:
     type: object
     properties:
-      transactionId:
+      notes:
         type: string
       category:
         type: string
@@ -343,7 +263,7 @@ definitions:
         type: string
         example: transaction category updated successfully
       body:
-        $ref: "#/definitions/Transaction"
+        $ref: '#/definitions/Transaction'
   NotesPayload:
     type: object
     properties:
@@ -362,4 +282,4 @@ definitions:
         type: string
         example: transaction Notes updated successfully
       body:
-        $ref: "#/definitions/Transaction"
+        $ref: '#/definitions/Transaction'
