@@ -112,29 +112,6 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/accounts:
-    get:
-      tags:
-        - User Module
-      summary: User accounts API
-      description: List user's accounts
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          type: string
-          required: true
-      responses:
-        "200":
-          description: Accounts retrieved successully
-          schema:
-            $ref: "#/definitions/ApiAccountsResponse"
-        "400":
-          description: Invalid Fields
-        "500":
-          description: Internal Server Error
-      security:
-        - Bearer: []
   /user/{accountId}:
     get:
       tags:
@@ -202,7 +179,7 @@ paths:
     delete:
       tags:
         - Transaction Module
-      summary: update transaction's notes
+      summary: delete transaction's notes
       description: delete or update transaction's notes
       parameters:
         - in: path
@@ -215,19 +192,11 @@ paths:
           description: Attach Bearer JWT token
           type: string
           required: true
-        - in: body
-          name: body
-          description: Payload for update transaction's notes
-          required: true
-          schema:
-            $ref: "#/definitions/NotesPayload"
       produces:
         - application/json
       responses:
         "200":
-          description: Update Notes retrieved successully
-          schema:
-            $ref: "#/definitions/ApiNotesResponse"
+          description: delete Notes successfully
         "400":
           description: Invalid Fields
         "500":
